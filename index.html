@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Runi Dwi Jiasta Profile</title>
+    <title>Runi Dwi Jiasta Portfolio</title>
     <!-- Load Poppins Font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Load Tailwind CSS -->
@@ -23,21 +23,40 @@
         }
         @media (min-width: 640px) {
             .section-padding {
-                padding: 5rem 2rem; /* Larger spacing for desktop */
+                padding: 4rem 2rem;
             }
         }
-        /* Consistent blue gradient */
+        /* Consistent blue gradient for highlights */
         .text-gradient {
-            background-image: linear-gradient(to right, #1d4ed8, #3b82f6); /* Blue 700 to Blue 500 */
+            background-image: linear-gradient(to right, #1d4ed8, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent; /* Fallback for unsupported browsers */
         }
         /* Adding deeper shadow effect on hover */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
         .card-hover:hover {
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1), 0 4px 6px -2px rgba(37, 99, 235, 0.05); /* Blue shadow */
-            transform: translateY(-2px);
+            box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.2), 0 5px 10px -5px rgba(37, 99, 235, 0.1); /* Stronger blue shadow */
+            transform: translateY(-5px); /* Stronger lift */
+        }
+        /* Blue header background effect */
+        .hero-background {
+            background-image: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); /* Deep blue gradient */
+            position: relative;
+            z-index: 10;
+        }
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 1;
         }
     </style>
     <script>
@@ -45,9 +64,9 @@
             theme: {
                 extend: {
                     colors: {
-                        /* Defining Primary and Secondary blue colors */
                         'primary-blue': '#2563eb', /* Blue 600 */
                         'secondary-gray': '#1e40af', /* Blue 800 */
+                        'light-blue': '#bfdbfe', /* Blue 200 */
                     }
                 }
             }
@@ -56,163 +75,171 @@
 </head>
 <body class="min-h-screen antialiased">
 
-    <!-- Header & Hero Section -->
-    <header class="bg-white shadow-xl"> 
-        <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8 section-padding">
+    <!-- Header & Hero Section (Portfolio Focus) -->
+    <header class="hero-background text-white"> 
+        <div class="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8 section-padding relative z-20">
             <div class="text-center">
+                
                 <!-- Profile Image -->
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROGZfx22FEDy6PqOA-58m4NxEue93_DssdAE8_LV4BQOc06FlpQ3YDUf-jbcYsjpU14pA&usqp=CAU" 
                      alt="Runi Dwi Jiasta Profile Picture"
-                     class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary-blue ring-4 ring-primary-blue/20 shadow-2xl">
+                     class="w-36 h-36 rounded-full mx-auto mb-6 object-cover border-4 border-white ring-4 ring-light-blue shadow-2xl">
                 
-                <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-primary-blue mb-2">
+                <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight mb-1 text-white">
                     RUNI DWI JIASTA
                 </h1>
-                <p class="text-xl sm:text-2xl text-secondary-gray font-light mb-4">
-                    Information Systems Student (HCI Specialization)
+                <p class="text-xl sm:text-2xl font-light mb-4 text-light-blue">
+                    HCI & Data-Driven Product Enthusiast
                 </p>
 
-                <!-- Contact Information: Email and Phone Number -->
-                <div class="text-sm text-gray-600 space-y-1 mb-6 font-medium">
-                    <p class="flex items-center justify-center">
-                        <i data-lucide="mail" class="w-4 h-4 mr-2 text-primary-blue"></i>
-                        <a href="mailto:runidjiasta@gmail.com" class="hover:text-primary-blue transition duration-200">runidjiasta@gmail.com</a>
-                    </p>
-                    <p class="flex items-center justify-center">
-                        <i data-lucide="phone" class="w-4 h-4 mr-2 text-primary-blue"></i>
-                        +62 899 9866 700
-                    </p>
-                </div>
-
-                <!-- Short Description/Summary from CV -->
-                <p class="mt-4 text-gray-700 max-w-2xl mx-auto leading-relaxed text-lg italic">
-                    "Third-year Information Systems student (HCI Specialization) at Atma Jaya Catholic University of Indonesia, demonstrating strong analytical skills, data processing capability, and a meticulous approach to process optimization. Highly motivated to leverage technical and analytical skills to improve operational efficiency and drive data-informed product decisions (Product Intern/Business Analyst Intern)."
+                <!-- Short Description/Summary focused on value -->
+                <p class="mt-4 text-white/90 max-w-2xl mx-auto leading-relaxed text-lg font-medium">
+                    Third-year Information Systems student specializing in Human-Computer Interaction. I leverage analytical skills and design thinking to optimize processes and drive informed product decisions, focusing on user experience and operational efficiency.
                 </p>
                 
-                <!-- Social Media Icons -->
-                <div class="mt-8 flex justify-center space-x-6">
-                    <!-- LinkedIn -->
-                    <a href="https://www.linkedin.com/in/runidjiasta" target="_blank" class="text-primary-blue hover:text-secondary-gray transition-all duration-300 transform hover:scale-125" aria-label="LinkedIn">
-                        <i data-lucide="linkedin" class="w-8 h-8"></i>
-                    </a>
-                    <!-- GitHub (Placeholder) -->
-                    <a href="https://github.com/YourGitHub" target="_blank" class="text-primary-blue hover:text-secondary-gray transition-all duration-300 transform hover:scale-125" aria-label="GitHub">
-                        <i data-lucide="github" class="w-8 h-8"></i>
-                    </a>
-                    <!-- WhatsApp (Placeholder) -->
-                    <a href="https://wa.me/628999866700" target="_blank" class="text-primary-blue hover:text-secondary-gray transition-all duration-300 transform hover:scale-125" aria-label="WhatsApp">
-                        <i data-lucide="whatsapp" class="w-8 h-8"></i>
-                    </a>
-                    <!-- Instagram (Placeholder) -->
-                    <a href="https://www.instagram.com/YourInstagram" target="_blank" class="text-primary-blue hover:text-secondary-gray transition-all duration-300 transform hover:scale-125" aria-label="Instagram">
-                        <i data-lucide="instagram" class="w-8 h-8"></i>
-                    </a>
-                    <!-- Email -->
-                    <a href="mailto:runidjiasta@gmail.com" class="text-primary-blue hover:text-secondary-gray transition-all duration-300 transform hover:scale-125" aria-label="Email">
-                        <i data-lucide="mail" class="w-8 h-8"></i>
-                    </a>
+                <!-- Contact Information & Social Media Icons -->
+                <div class="mt-8">
+                    <!-- Contact Info (Minimized) -->
+                    <div class="text-sm space-x-4 mb-6 font-medium flex justify-center text-white/90">
+                        <p class="flex items-center">
+                            <i data-lucide="mail" class="w-4 h-4 mr-2"></i>
+                            <a href="mailto:runidjiasta@gmail.com" class="hover:underline">runidjiasta@gmail.com</a>
+                        </p>
+                        <p class="flex items-center">
+                            <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
+                            +62 899 9866 700
+                        </p>
+                    </div>
+
+                    <!-- Social Media Icons -->
+                    <div class="flex justify-center space-x-7">
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/runidjiasta" target="_blank" class="text-light-blue hover:text-white transition-all duration-300 transform hover:scale-125" aria-label="LinkedIn">
+                            <i data-lucide="linkedin" class="w-8 h-8"></i>
+                        </a>
+                        <!-- GitHub (Placeholder) -->
+                        <a href="https://github.com/YourGitHub" target="_blank" class="text-light-blue hover:text-white transition-all duration-300 transform hover:scale-125" aria-label="GitHub">
+                            <i data-lucide="github" class="w-8 h-8"></i>
+                        </a>
+                        <!-- WhatsApp (Placeholder) -->
+                        <a href="https://wa.me/628999866700" target="_blank" class="text-light-blue hover:text-white transition-all duration-300 transform hover:scale-125" aria-label="WhatsApp">
+                            <i data-lucide="whatsapp" class="w-8 h-8"></i>
+                        </a>
+                        <!-- Instagram (Placeholder) -->
+                        <a href="https://www.instagram.com/YourInstagram" target="_blank" class="text-light-blue hover:text-white transition-all duration-300 transform hover:scale-125" aria-label="Instagram">
+                            <i data-lucide="instagram" class="w-8 h-8"></i>
+                        </a>
+                        <!-- Email -->
+                        <a href="mailto:runidjiasta@gmail.com" class="text-light-blue hover:text-white transition-all duration-300 transform hover:scale-125" aria-label="Email">
+                            <i data-lucide="mail" class="w-8 h-8"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content Sections -->
+    <!-- Skills Section (Refined with Icons and Tags) -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Education Section -->
         <section class="section-padding border-b border-gray-200">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-primary-blue pl-4 tracking-wide">Education</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-primary-blue pl-4 tracking-wide">Key Skills</h2>
             
-            <div class="space-y-6">
-                <!-- Atma Jaya -->
-                <div class="bg-white p-6 rounded-xl shadow-lg card-hover transition duration-300">
-                    <h3 class="text-xl font-semibold text-primary-blue">ATMA JAYA CATHOLIC UNIVERSITY OF INDONESIA</h3>
-                    <p class="text-sm text-gray-500 mb-2 font-medium">August 2023 – 2027 (Expected) | Jakarta, Indonesia</p>
-                    <p class="text-gray-700">Bachelor’s Degree in Information Systems with Specialization in Human Computer Interaction (HCI)</p>
-                    <p class="text-sm font-bold text-green-600 mt-2 bg-green-50 inline-block px-3 py-1 rounded-full">GPA: 3.98/4.00</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Data Analysis/Tools -->
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="bar-chart-3" class="w-7 h-7 text-primary-blue mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800">Data & Analytical Tools</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                         <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">JASP (Data Analysis)</span>
+                         <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Microsoft Excel</span>
+                         <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Google Sheets</span>
+                         <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Data Processing</span>
+                    </div>
                 </div>
-
-                <!-- SMA Negeri 2 Tangsel -->
-                <div class="bg-white p-6 rounded-xl shadow-lg card-hover transition duration-300">
-                    <h3 class="text-xl font-semibold text-primary-blue">SMA Negeri 2 Tangerang Selatan</h3>
-                    <p class="text-sm text-gray-500 mb-2 font-medium">July 2020 – June 2023 | South Tangerang, Indonesia</p>
-                    <p class="text-gray-700">Math & Science Program. Ranked 29th out of 141 eligible students in Math & Science Program for the National Selection Based on Achievement (SNBP)</p>
-                    <p class="text-sm font-medium text-gray-600 mt-2">GPA: 91.29%</p>
+                
+                <!-- Product/Design Tools -->
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="layers-3" class="w-7 h-7 text-primary-blue mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800">Product & Design (HCI)</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Figma</span>
+                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Canva</span>
+                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Adobe Photoshop/LR</span>
+                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Design Thinking</span>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <!-- Experience Section (Focusing on Key Roles) -->
+        
+        <!-- Organizational Experience (Optimized) -->
         <section class="section-padding border-b border-gray-200">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-primary-blue pl-4 tracking-wide">Organizational Experience</h2>
             
             <div class="space-y-8">
                 <!-- UPM Secretary -->
-                <div class="bg-white p-6 rounded-xl shadow-lg card-hover transition duration-300">
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
                     <h3 class="text-xl font-semibold text-primary-blue">Secretary | Student Research Unit (UPM)</h3>
                     <p class="text-sm text-gray-500 mb-3 italic">December 2024 – Present | Jakarta, Indonesia</p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
-                        <li>Managed comprehensive administration for UPM including correspondence management, systematic document archiving, and timely distribution of meeting minutes.</li>
-                        <li>Spearheaded the administrative success of 5 key UPM programs by leading proposal/LPJ preparation for PAB & PROSTU, ensuring 100% regulatory compliance.</li>
-                    </ul>
-                </div>
-
-                <!-- SM FBTI Staff -->
-                <div class="bg-white p-6 rounded-xl shadow-lg card-hover transition duration-300">
-                    <h3 class="text-xl font-semibold text-primary-blue">Staff of Publication and Documentation Division | Faculty of Engineering Student Senate (SM FBTI)</h3>
-                    <p class="text-sm text-gray-500 mb-3 italic">December 2024 – Present | Jakarta, Indonesia</p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
-                        <li>Drafted Instagram feed templates and designed visual content for SMFBTI UAJ's social media.</li>
-                        <li>Successfully designed more than 9 holiday-themed posts, enhancing account engagement and visibility by 20%.</li>
+                    <ul class="list-disc text-gray-700 space-y-2 ml-4">
+                        <li>Managed comprehensive administration (correspondence, archiving, meeting minutes).</li>
+                        <li>Spearheaded administrative success for 5 major programs, ensuring 100% regulatory compliance (proposal/LPJ).</li>
                     </ul>
                 </div>
 
                 <!-- Vice Project Leader -->
-                 <div class="bg-white p-6 rounded-xl shadow-lg card-hover transition duration-300">
+                 <div class="bg-white p-6 rounded-xl shadow-md card-hover">
                     <h3 class="text-xl font-semibold text-primary-blue">Vice Project Leader | Sinergi Aksi Edukasi (SAE) 2025</h3>
                     <p class="text-sm text-gray-500 mb-3 italic">May – September 2025</p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                    <ul class="list-disc text-gray-700 space-y-2 ml-4">
                         <li>Led operational management for the 12-session program (31 staff & volunteers), focusing on resource allocation.</li>
                         <li>Achieved 80% student success and ensured 29.67% fiscal efficiency (under budget).</li>
                     </ul>
                 </div>
-                
             </div>
         </section>
 
-        <!-- Skills and Achievements Section -->
-        <section class="section-padding">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-primary-blue pl-4 tracking-wide">Skills & Achievements</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Skills -->
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">Technical Skills & Tools</h3>
-                    
-                    <h4 class="font-bold text-lg text-secondary-gray mb-2 mt-4">Data Analysis/Tools:</h4>
-                    <p class="text-gray-700">JASP (Data Analysis), Microsoft Excel, Google Sheets, Google Forms, Microsoft Word, Microsoft PowerPoint.</p>
-
-                    <h4 class="font-bold text-lg text-secondary-gray mt-4 mb-2">Product/Design Tools:</h4>
-                    <p class="text-gray-700">Figma, Canva, Adobe Photoshop and Lightroom.</p>
+        <!-- Achievements & Education (Combined for brevity) -->
+        <section class="section-padding grid md:grid-cols-2 gap-8">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-yellow-500 pl-4 tracking-wide">Awards</h2>
+                <div class="space-y-4">
+                    <div class="flex items-start bg-white p-4 rounded-xl shadow-md card-hover">
+                        <i data-lucide="trophy" class="w-6 h-6 text-yellow-500 mr-4 mt-1 flex-shrink-0"></i>
+                        <span class="font-medium text-gray-700">1st Winner of Product Innovation Category at the 6th ABIEX.</span>
+                    </div>
+                    <div class="flex items-start bg-white p-4 rounded-xl shadow-md card-hover">
+                        <i data-lucide="trophy" class="w-6 h-6 text-yellow-500 mr-4 mt-1 flex-shrink-0"></i>
+                        <span class="font-medium text-gray-700">1st Winner of Microsoft ASEAN AI for Accessibility Hackathon 2024 Indonesia.</span>
+                    </div>
+                    <div class="flex items-start bg-white p-4 rounded-xl shadow-md card-hover">
+                        <i data-lucide="trophy" class="w-6 h-6 text-yellow-500 mr-4 mt-1 flex-shrink-0"></i>
+                        <span class="font-medium text-gray-700">6th Place of ACADefense Challenge 2025.</span>
+                    </div>
                 </div>
-                
-                <!-- Achievements -->
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">Selected Achievements</h3>
-                    <ul class="list-none space-y-4">
-                        <li class="flex items-start text-gray-700 p-2 bg-blue-50 rounded-lg">
-                            <i data-lucide="award" class="w-5 h-5 text-primary-blue mr-3 mt-1 flex-shrink-0"></i>
-                            <span class="font-medium">1st Winner of Product Innovation Category at the 6th ABIEX.</span>
-                        </li>
-                        <li class="flex items-start text-gray-700 p-2 bg-blue-50 rounded-lg">
-                            <i data-lucide="award" class="w-5 h-5 text-primary-blue mr-3 mt-1 flex-shrink-0"></i>
-                            <span class="font-medium">1st Winner of Microsoft ASEAN AI for Accessibility Hackathon 2024 Indonesia.</span>
-                        </li>
-                        <li class="flex items-start text-gray-700 p-2 bg-blue-50 rounded-lg">
-                            <i data-lucide="award" class="w-5 h-5 text-primary-blue mr-3 mt-1 flex-shrink-0"></i>
-                            <span class="font-medium">6th Place of ACADefense Challenge 2025.</span>
-                        </li>
-                    </ul>
+            </div>
+            
+            <div>
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-primary-blue pl-4 tracking-wide">Education</h2>
+                <div class="space-y-6">
+                    <!-- Atma Jaya -->
+                    <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-semibold text-primary-blue">ATMA JAYA CATHOLIC UNIVERSITY OF INDONESIA</h3>
+                            <span class="text-sm font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full">GPA: 3.98/4.00</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2 font-medium">August 2023 – 2027 (Expected)</p>
+                        <p class="text-gray-700">Bachelor’s Degree in Information Systems (HCI Specialization)</p>
+                    </div>
+                    <!-- SMA Negeri 2 Tangsel -->
+                    <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                        <h3 class="text-xl font-semibold text-primary-blue">SMA Negeri 2 Tangerang Selatan</h3>
+                        <p class="text-sm text-gray-500 mb-2 font-medium">July 2020 – June 2023</p>
+                        <p class="text-gray-700">Math & Science Program</p>
+                    </div>
                 </div>
             </div>
         </section>

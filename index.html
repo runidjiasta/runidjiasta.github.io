@@ -5,26 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Runi Dwi Jiasta | Portfolio</title>
     
-    <!-- Fonts: Inter for that clean, modern "Silicon Valley" look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Icons: FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- CSS VARIABLES --- */
         :root {
             --bg-color: #fafafa;
             --card-bg: #ffffff;
             --text-main: #111111;
             --text-secondary: #666666;
             
-            /* Monochrome Theme */
-            --accent-color: #171717; /* Neutral-900 */
-            --accent-hover: #000000; /* Pure Black */
-            --accent-soft: #f4f4f5;  /* Neutral-100 */
+            --accent-color: #171717; 
+            --accent-hover: #000000; 
+            --accent-soft: #f4f4f5; 
             
             --border-color: #e5e5e5;
             --radius: 16px; 
@@ -33,7 +29,6 @@
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* --- GLOBAL RESET --- */
         * {
             margin: 0;
             padding: 0;
@@ -52,7 +47,6 @@
             -webkit-font-smoothing: antialiased;
             padding-bottom: 80px;
             overflow-x: hidden;
-            /* Added subtle background pattern */
             background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
             background-size: 40px 40px;
         }
@@ -60,7 +54,6 @@
         a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
 
-        /* --- ANIMATIONS --- */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -100,14 +93,12 @@
             transform: translateY(0);
         }
 
-        /* --- LAYOUT CONTAINER --- */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
-        /* --- HEADER --- */
         nav {
             margin-bottom: 80px; 
             display: flex; 
@@ -120,7 +111,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            margin-top: -20px; /* Offset for padding */
+            margin-top: -20px; 
         }
 
         .logo {
@@ -158,13 +149,12 @@
             transform: translateX(5px);
         }
 
-        /* --- 1. HERO SECTION --- */
         .hero {
             display: grid;
-            grid-template-columns: 1fr 350px; /* Slightly wider right column */
+            grid-template-columns: 1fr 350px; 
             gap: 60px;
             margin-bottom: 120px;
-            align-items: center; /* Center align vertically */
+            align-items: center; 
             animation: fadeInUp 1s ease-out 0.2s backwards;
             position: relative;
         }
@@ -267,7 +257,6 @@
             box-shadow: var(--shadow);
         }
 
-        /* --- HERO RIGHT SIDE (Visual) --- */
         .hero-visual {
             position: relative;
             display: flex;
@@ -275,7 +264,6 @@
             align-items: center;
         }
 
-        /* Abstract Doodles for Hero */
         .doodle-hero-bg {
             position: absolute;
             top: -40px;
@@ -298,7 +286,6 @@
             z-index: 0;
         }
 
-        /* Profile Card */
         .profile-card {
             background: var(--card-bg);
             padding: 40px 30px;
@@ -306,7 +293,7 @@
             border: 1px solid var(--border-color);
             text-align: center;
             box-shadow: var(--shadow);
-            position: relative; /* Changed from sticky for this layout */
+            position: relative; 
             z-index: 1;
             animation: float 6s ease-in-out infinite;
             width: 100%;
@@ -395,7 +382,6 @@
             transform: translateY(-5px) rotate(360deg);
         }
 
-        /* --- 2. ABOUT SECTION (Updated with Right Side Content) --- */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -442,7 +428,6 @@
             line-height: 1.8;
         }
 
-        /* Right Side: Education & Stats Card */
         .about-sidebar {
             display: flex;
             flex-direction: column;
@@ -515,7 +500,7 @@
             padding: 8px 16px;
             border-radius: 8px;
             font-weight: 700;
-            font-size: 1.5rem; /* Big GPA */
+            font-size: 1.5rem; 
             color: var(--accent-color);
             border: 1px solid rgba(0,0,0,0.05);
         }
@@ -542,7 +527,6 @@
             color: var(--text-secondary);
         }
 
-        /* --- 2b. SKILLS SECTION --- */
         .skills-section {
             margin-bottom: 120px;
         }
@@ -612,7 +596,6 @@
         .reveal.active .skill-card:nth-child(3) { animation: popIn 0.5s ease-out 0.3s backwards; }
         .reveal.active .skill-card:nth-child(4) { animation: popIn 0.5s ease-out 0.4s backwards; }
 
-        /* --- 3. EXPERIENCE --- */
         .experience-section {
             margin-bottom: 120px;
         }
@@ -627,7 +610,7 @@
             border-bottom: 1px solid var(--border-color);
             transition: var(--transition);
             border-left: 3px solid transparent;
-            background-color: rgba(255,255,255,0.5); /* Slight transparency */
+            background-color: rgba(255,255,255,0.5); 
         }
 
         .exp-item:hover {
@@ -677,7 +660,6 @@
             margin-bottom: 5px;
         }
 
-        /* --- 4. PROJECTS (Bento Grid) --- */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -703,7 +685,6 @@
             border-color: var(--accent-color);
         }
 
-        /* UPDATED IMAGE STYLES FOR REAL IMAGES */
         .project-img {
             width: 100%;
             height: 180px;
@@ -772,7 +753,6 @@
             color: var(--accent-color);
         }
         
-        /* NEW BUTTON STYLES FOR PROJECT LINKS */
         .project-links {
             margin-bottom: 15px;
         }
@@ -798,7 +778,6 @@
             transform: translateY(-2px);
         }
 
-        /* --- 5. ACHIEVEMENTS --- */
         .achievements-box {
             background: #111;
             color: #fff;
@@ -882,7 +861,6 @@
             display: block;
         }
 
-        /* --- FOOTER --- */
         footer {
             text-align: center;
             padding-top: 60px;
@@ -895,7 +873,6 @@
             margin-bottom: 20px;
         }
 
-        /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
             .hero {
                 grid-template-columns: 1fr;
@@ -971,7 +948,7 @@
 
                 <div class="profile-card">
                     <div class="profile-img-container">
-                        <img src="https://ui-avatars.com/api/?name=Runi+Dwi&background=111&color=fff&size=256" alt="Runi Dwi Jiasta" class="profile-img">
+                        <img src="runi.jpg" alt="Runi Dwi Jiasta" class="profile-img">
                         <div class="status-dot" title="Available for work"></div>
                     </div>
                     <div class="profile-name">Runi Dwi Jiasta</div>
@@ -1377,4 +1354,5 @@
     </script>
 
 </body>
+
 </html>

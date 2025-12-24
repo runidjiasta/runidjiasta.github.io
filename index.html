@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Runi Dwi Jiasta | Portfolio</title>
+    
+    <!-- Fonts: Inter for that clean, modern "Silicon Valley" look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons: FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --bg-color: #fafafa;
+            --card-bg: #ffffff;
+            --text-main: #111111;
+            --text-secondary: #666666;
+            
+            /* Monochrome Theme */
+            --accent-color: #171717; /* Neutral-900 */
+            --accent-hover: #000000; /* Pure Black */
+            --accent-soft: #f4f4f5;  /* Neutral-100 */
+            
+            --border-color: #e5e5e5;
+            --radius: 16px; 
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- GLOBAL RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 80px;
+            overflow-x: hidden;
+            /* Added subtle background pattern */
+            background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            70% { transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- LAYOUT CONTAINER --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- HEADER --- */
+        nav {
+            margin-bottom: 80px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            animation: fadeInUp 0.8s ease-out;
+            background: rgba(250, 250, 250, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin-top: -20px; /* Offset for padding */
+        }
+
+        .logo {
+            font-weight: 800; 
+            font-size: 1.5rem;
+            letter-spacing: -1px;
+            position: relative;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 4px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .nav-link {
+            font-size: 0.95rem; 
+            color: var(--text-secondary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .nav-link:hover { 
+            color: var(--accent-color); 
+            transform: translateX(5px);
+        }
+
+        /* --- 1. HERO SECTION --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 350px; /* Slightly wider right column */
+            gap: 60px;
+            margin-bottom: 120px;
+            align-items: center; /* Center align vertically */
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+            position: relative;
+        }
+
+        .hero-content {
+            padding-top: 20px;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            color: var(--text-main);
+        }
+
+        .hero-tagline {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 90%;
+            font-weight: 400;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .badge:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background: var(--accent-soft);
+            transform: translateY(-2px);
+        }
+
+        .badge i { color: var(--text-main); transition: color 0.3s; }
+        .badge:hover i { color: var(--accent-color); }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #fff;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background-color: #fff;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        /* --- HERO RIGHT SIDE (Visual) --- */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Abstract Doodles for Hero */
+        .doodle-hero-bg {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 300px;
+            height: 300px;
+            z-index: 0;
+            opacity: 0.6;
+            animation: spinSlow 30s linear infinite;
+        }
+
+        .doodle-dots-hero {
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 150px;
+            height: 150px;
+            background-image: radial-gradient(#ccc 2px, transparent 2px);
+            background-size: 15px 15px;
+            z-index: 0;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative; /* Changed from sticky for this layout */
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+            width: 100%;
+        }
+        
+        .profile-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .profile-img-container {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bg-color);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+        
+        .profile-card:hover .profile-img {
+            transform: scale(1.05);
+        }
+
+        .status-dot {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 24px;
+            height: 24px;
+            background-color: #10B981;
+            border: 3px solid var(--card-bg);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .profile-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .profile-role {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 1.1rem;
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent-color);
+            color: #fff;
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+        /* --- 2. ABOUT SECTION (Updated with Right Side Content) --- */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-color);
+            margin-top: 5px;
+            border-radius: 2px;
+        }
+
+        .about-section {
+            margin-bottom: 100px;
+        }
+
+        .about-grid-new {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr; /* 2 Columns */
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 24px;
+            font-size: 1.15rem;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        /* Right Side: Education & Stats Card */
+        .about-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 30px;
+            position: relative;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .info-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-color);
+            color: #fff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .info-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+
+        .edu-item {
+            margin-bottom: 15px;
+        }
+
+        .edu-uni {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .edu-major {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .edu-gpa {
+            display: inline-block;
+            background: var(--accent-soft);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.5rem; /* Big GPA */
+            color: var(--accent-color);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .edu-gpa span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-left: 5px;
+        }
+
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .interest-tag {
+            font-size: 0.8rem;
+            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: 100px;
+            color: var(--text-secondary);
+        }
+
+        /* --- 2b. SKILLS SECTION --- */
+        .skills-section {
+            margin-bottom: 120px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .skill-group h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .skill-card {
+            display: flex;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateX(10px) scale(1.02);
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            background: var(--accent-soft);
+        }
+
+        .skill-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            display: flex;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--text-main);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        .reveal.active .skill-card:nth-child(1) { animation: popIn 0.5s ease-out 0.1s backwards; }
+        .reveal.active .skill-card:nth-child(2) { animation: popIn 0.5s ease-out 0.2s backwards; }
+        .reveal.active .skill-card:nth-child(3) { animation: popIn 0.5s ease-out 0.3s backwards; }
+        .reveal.active .skill-card:nth-child(4) { animation: popIn 0.5s ease-out 0.4s backwards; }
+
+        /* --- 3. EXPERIENCE --- */
+        .experience-section {
+            margin-bottom: 120px;
+        }
+
+        .exp-item {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 20px;
+            padding: 30px 20px;
+            margin: 0 -20px;
+            border-radius: var(--radius);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            background-color: rgba(255,255,255,0.5); /* Slight transparency */
+        }
+
+        .exp-item:hover {
+            background: #fff;
+            border-left-color: var(--accent-color);
+            box-shadow: var(--shadow);
+            transform: translateX(10px);
+        }
+
+        .exp-item:last-child { border-bottom: none; }
+
+        .exp-date {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            padding-top: 4px;
+        }
+
+        .exp-details h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .exp-org {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .exp-desc {
+            font-size: 1rem;
+            color: #444;
+            margin-bottom: 10px;
+        }
+        
+        .exp-list {
+            padding-left: 20px;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        .exp-list li {
+            list-style-type: disc;
+            margin-bottom: 5px;
+        }
+
+        /* --- 4. PROJECTS (Bento Grid) --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+            margin-bottom: 120px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-color);
+        }
+
+        /* UPDATED IMAGE STYLES FOR REAL IMAGES */
+        .project-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            letter-spacing: -0.5px;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            flex-grow: 1; 
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .tech-pill {
+            font-size: 0.75rem;
+            background: var(--bg-color);
+            padding: 6px 10px;
+            border-radius: 6px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        
+        .project-card:hover .tech-pill {
+            background: var(--accent-soft);
+            color: var(--accent-color);
+        }
+        
+        /* NEW BUTTON STYLES FOR PROJECT LINKS */
+        .project-links {
+            margin-bottom: 15px;
+        }
+        
+        .btn-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 8px 14px;
+            border-radius: 6px;
+            transition: var(--transition);
+            background: #fff;
+        }
+        
+        .btn-card:hover {
+            background: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* --- 5. ACHIEVEMENTS --- */
+        .achievements-box {
+            background: #111;
+            color: #fff;
+            padding: 60px;
+            border-radius: var(--radius);
+            text-align: left;
+            margin-bottom: 60px;
+            background-image: radial-gradient(circle at top right, #404040 0%, #111 50%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .achievements-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 45%,
+                rgba(255, 255, 255, 0.05) 50%,
+                transparent 55%
+            );
+            animation: shine 6s infinite linear;
+            pointer-events: none;
+        }
+        
+        @keyframes shine {
+            0% { transform: translate(-30%, -30%) rotate(0deg); }
+            100% { transform: translate(30%, 30%) rotate(0deg); }
+        }
+        
+        .achievements-box h2 { 
+            margin-bottom: 40px; 
+            font-size: 2rem;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .achievement-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            transition: var(--transition);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        .achievement-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        .achievement-icon {
+            font-size: 1.5rem;
+            color: #e5e5e5;
+            margin-top: 3px;
+        }
+
+        .achievement-text strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .achievement-text span {
+            font-size: 0.9rem;
+            color: #aaa;
+            line-height: 1.4;
+            display: block;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding-top: 60px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .about-grid-new {
+                grid-template-columns: 1fr;
+            }
+            .about-sidebar {
+                margin-top: 20px;
+            }
+            .hero-visual {
+                justify-content: center;
+            }
+            .doodle-hero-bg {
+                width: 200px;
+                height: 200px;
+                right: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .exp-item {
+                grid-template-columns: 1fr;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <nav>
+            <div class="logo">RUNI.</div>
+            <a href="mailto:runidjiasta@gmail.com" class="nav-link">Get in Touch <i class="fa-solid fa-arrow-right" style="margin-left: 5px; font-size: 0.8em;"></i></a>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Bridging Data Analytics & <br><span style="color: var(--text-secondary);">Digital Product Development.</span></h1>
+                
+                <p class="hero-tagline">
+                    I’m <strong>Runi Dwi Jiasta</strong>, an Information Systems student (HCI Specialization) at Atma Jaya Catholic University. I bridge the gap between complex data and intuitive design to create efficient digital solutions.
+                </p>
+
+                <div class="hero-badges">
+                    <div class="badge"><i class="fa-solid fa-location-dot"></i> South Tangerang, Indonesia</div>
+                    <div class="badge"><i class="fa-solid fa-graduation-cap"></i> GPA: 3.98/4.00</div>
+                    <div class="badge"><i class="fa-solid fa-briefcase"></i> Open to Internships</div>
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="mailto:runidjiasta@gmail.com" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <svg class="doodle-hero-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#e5e5e5" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-4.9C93.5,9.3,82.2,22.9,72.3,34.8C62.4,46.7,53.9,56.9,43.6,65.6C33.3,74.3,21.2,81.5,8.1,83.1C-5,84.7,-19.1,80.7,-31.6,73.8C-44.1,66.9,-55,57.1,-64.7,46.1C-74.4,35.1,-82.9,22.9,-85.4,9.6C-87.9,-3.7,-84.4,-18.1,-76.3,-30.2C-68.2,-42.3,-55.5,-52.1,-42.5,-59.7C-29.5,-67.3,-16.2,-72.7,-1.2,-70.6C13.8,-68.5,27.6,-59,30.5,-83.6L44.7,-76.4Z" transform="translate(100 100)" />
+                </svg>
+                
+                <div class="doodle-dots-hero"></div>
+
+                <div class="profile-card">
+                    <div class="profile-img-container">
+                        <img src="https://ui-avatars.com/api/?name=Runi+Dwi&background=111&color=fff&size=256" alt="Runi Dwi Jiasta" class="profile-img">
+                        <div class="status-dot" title="Available for work"></div>
+                    </div>
+                    <div class="profile-name">Runi Dwi Jiasta</div>
+                    <div class="profile-role">Information Systems Student</div>
+                    
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/runidjiasta" target="_blank" class="social-link" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://github.com/runidjiasta" target="_blank" class="social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://wa.me/+628999866700" target="_blank" class="social-link" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="mailto:runidjiasta@gmail.com" class="social-link" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-header reveal">
+            <h2 class="section-title">About Me</h2>
+        </div>
+
+        <section class="about-section reveal">
+            <div class="about-grid-new">
+                <div class="about-text">
+                    <p>
+                        I am a third-year Information Systems student specializing in <strong>Human-Computer Interaction (HCI)</strong>. My passion lies in bridging the gap between data analytics and digital product development.
+                    </p>
+                    <p>
+                        I demonstrate strong capability in data interpretation and process optimization. I am eager to leverage these skills to create efficient digital solutions that transform user experiences and support data-informed decision-making in fast-paced environments.
+                    </p>
+                    <p>
+                        Currently, I am actively involved in the <strong>Faculty Student Senate (SM FBTI)</strong>, where I manage administrative workflows and lead visual communication strategies.
+                    </p>
+                </div>
+                
+                <div class="about-sidebar">
+                    <div class="info-card">
+                        <div class="info-card-header">
+                            <div class="info-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <div class="info-title">Education</div>
+                        </div>
+                        
+                        <div class="edu-item">
+                            <div class="edu-uni">Atma Jaya Catholic University</div>
+                            <span class="edu-major">Information Systems (HCI)</span>
+                            <div class="edu-gpa">
+                                3.98 <span>/ 4.00 GPA</span>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 25px;">
+                            <div class="info-title" style="font-size: 0.95rem; margin-bottom: 10px;">Current Focus</div>
+                            <div class="interest-tags">
+                                <span class="interest-tag">UI/UX Research</span>
+                                <span class="interest-tag">UI/UX Design</span>
+                                <span class="interest-tag">Data Analysis</span>
+                                <span class="interest-tag">Product Innovation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-header reveal">
+            <h2 class="section-title">My Skills</h2>
+        </div>
+
+        <section class="skills-section reveal">
+            <div class="skills-grid">
+                
+                <div class="skill-group">
+                    <h3>Data & Analysis</h3>
+                    <div class="skill-items">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fa-brands fa-python"></i></div>
+                            <div class="skill-name">Python (Pandas, NumPy)</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
+                            <div class="skill-name">SQL</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fa-solid fa-chart-line"></i></div>
+                            <div class="skill-name">JASP</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h3>Design & Creative</h3>
+                    <div class="skill-items">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fa-brands fa-figma"></i></div>
+                            <div class="skill-name">Figma</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fa-solid fa-palette"></i></div>
+                            <div class="skill-name">Canva</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fa-solid fa-layer-group"></i></div>
+                            <div class="skill-name">Adobe Photoshop</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h3>Development</h3>
+                    <div class="skill-items">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fa-solid fa-leaf"></i></div>
+                            <div class="skill-name">MongoDB</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fa-brands fa-node-js"></i></div>
+                            <div class="skill-name">Node.js</div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fa-brands fa-android"></i></div>
+                            <div class="skill-name">Android Development</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="section-header reveal">
+            <h2 class="section-title">Experience</h2>
+        </div>
+        <section class="experience-section reveal">
+            <div class="exp-item">
+                <div class="exp-date">Dec 2025 - Present</div>
+                <div class="exp-details">
+                    <h3>Head of Publication & Documentation</h3>
+                    <span class="exp-org">Senate of Faculty of Engineering (SM FBTI)</span>
+                    <ul class="exp-list">
+                        <li>Project Coordinator for 2 major events: Benchmarking Visit & Internal Consolidation.</li>
+                        <li>Produced 50+ visual assets using Canva, enhancing account engagement by 50% while ensuring 100% brand consistency.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-date">August 2025 - Present</div>
+                <div class="exp-details">
+                    <h3>Secretary</h3>
+                    <span class="exp-org">Laboratory Assistant</span>
+                    <ul class="exp-list">
+                        <li>Mentored students in Computational Thinking and HCI, providing hands-on assistance to troubleshoot coursework challenges and reinforce core concepts.</li>
+                        <li>Led laboratory tours for high school students to introduce the Information Systems major, explaining the curriculum and demonstrating relevant software tools.</li>                        
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-date">May 2025 - Sep 2025</div>
+                <div class="exp-details">
+                    <h3>Vice Project Leader</h3>
+                    <span class="exp-org">Sinergi Aksi Edukasi (SAE) 2025</span>
+                    <ul class="exp-list">
+                        <li>Led operational management for a 12-session program, supervising 31 staff and volunteers.</li>
+                        <li>Achieved 80% student success and ensured 29.67% fiscal efficiency (under budget).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-date">Dec 2024 - Nov 2025</div>
+                <div class="exp-details">
+                    <h3>Secretary</h3>
+                    <span class="exp-org">Student Research Unit (UPM)</span>
+                    <ul class="exp-list">
+                        <li>Managed comprehensive administration including correspondence, archiving, and meeting minutes.</li>
+                        <li>Spearheaded administrative success of 5 key programs by leading proposal/LPJ preparation for PAB & PROSTU.</li>
+                        <li>Ensured 100% regulatory compliance and successful closure of major programs.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="achievements-box reveal">
+            <h2>🏆 Awards & Recognition</h2>
+            <div class="achievement-grid">
+                 <div class="achievement-item">
+                    <div class="achievement-icon"><i class="fa-solid fa-trophy"></i></div>
+                    <div class="achievement-text">
+                        <strong>1st Winner - Product Innovation</strong>
+                        <span>6th ABIEX (Atma Jaya Business Investment Exhibition)</span>
+                    </div>
+                </div>
+
+                <div class="achievement-item">
+                    <div class="achievement-icon"><i class="fa-solid fa-trophy"></i></div>
+                    <div class="achievement-text">
+                        <strong>1st Winner</strong>
+                        <span>Microsoft ASEAN AI for Accessibility Hackathon 2024 Indonesia</span>
+                    </div>
+                </div>
+                
+                <div class="achievement-item">
+                    <div class="achievement-icon"><i class="fa-solid fa-medal"></i></div>
+                    <div class="achievement-text">
+                        <strong>2nd Runner Up - Business Innovation</strong>
+                        <span>UTM Techventure Challenge 3.0 2025</span>
+                    </div>
+                </div>
+                
+                <div class="achievement-item">
+                    <div class="achievement-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="achievement-text">
+                        <strong>6th Place</strong>
+                        <span>ACADefense Challenge 2025</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="section-header reveal" id="projects">
+            <h2 class="section-title">Selected Projects</h2>
+            <a href="https://github.com/runidjiasta" target="_blank" style="font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 5px;">View GitHub <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <section class="projects-grid reveal">
+
+            <div class="project-card">
+                <img src="BoostUp.png" class="project-img" alt="BoostUp Project">
+                <div class="card-body">
+                    <div class="project-category">UI/UX & Product Design</div>
+                    <div class="project-title">BoostUp</div>
+                    <div class="project-desc">
+                        A comprehensive productivity ecosystem featuring Task Management, Habit Tracking (streak & stats), Sleep/Mood Trackers, and Pinned Notes. Designed to boost daily efficiency.
+                    </div>
+                    <div class="project-links">
+                        <a href="https://www.figma.com/proto/Gg4d5o9706BDjG6wJbEtNr/BoostUp---ARK-Team?node-id=2118-207&t=5KfdfQCPJpavAjdI-1" target="_blank" class="btn-card">
+                            <i class="fa-brands fa-figma"></i> View Prototype
+                        </a>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Figma</span>
+                        <span class="tech-pill">User Flow</span>
+                        <span class="tech-pill">Prototyping</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="SotoKwali.png" class="project-img" alt="Soto Kwali Project">
+                <div class="card-body">
+                    <div class="project-category">UI/UX Design</div>
+                    <div class="project-title">CMS Soto Kwali Bu Ni</div>
+                    <div class="project-desc">
+                        A comprehensive redesign of a restaurant management system. Applied UX laws (Hick’s, Fitts’, Proximity) to streamline order management and inventory tracking.
+                    </div>
+                    <div class="project-links">
+                        <a href="https://www.figma.com/proto/wDULbzKUzdr8IAptK8ESZ5/POS-SOTO-KWALI-BU-NI?node-id=2-670&starting-point-node-id=2%3A670&t=ICGBZ3RRyIL2AbRI-1" target="_blank" class="btn-card">
+                            <i class="fa-brands fa-figma"></i> View Prototype
+                        </a>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Figma</span>
+                        <span class="tech-pill">UX Research</span>
+                        <span class="tech-pill">Prototyping</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="FruitDetection.png" class="project-img" alt="YOLOv8 Project">
+                <div class="card-body">
+                    <div class="project-category">AI & Machine Learning</div>
+                    <div class="project-title">YOLOv8 Fruit Detection</div>
+                    <div class="project-desc">
+                        Trained a deep learning model to detect fruits (apple, banana, orange) in real-time via webcam. Optimized for speed and accuracy as part of an AI Systems course.
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/runidjiasta/UTSFruitDetection" target="_blank" class="btn-card">
+                            <i class="fa-brands fa-github"></i> View GitHub
+                        </a>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">YOLOv8</span>
+                        <span class="tech-pill">Deep Learning</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="PathsPredict" class="project-img" alt="Path Predict Project">
+                <div class="card-body">
+                    <div class="project-category">Data Science</div>
+                    <div class="project-title">Path Predict (PathsPredict)</div>
+                    <div class="project-desc">
+                        A congestion predictor for Jakarta's KRL and TransJakarta networks. Helps commuters make data-driven decisions to avoid crowds. Developed with ARK Team.
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/teresakae/PathsPredict" target="_blank" class="btn-card">
+                            <i class="fa-brands fa-github"></i> View GitHub
+                        </a>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Machine Learning</span>
+                        <span class="tech-pill">Web App</span>
+                        <span class="tech-pill">Data Analysis</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="HERApp.png" class="project-img" alt="HER App">
+                <div class="card-body">
+                    <div class="project-category">Mobile Product</div>
+                    <div class="project-title">HER App</div>
+                    <div class="project-desc">
+                        A menstrual health tracker for women. Features calendar predictions, symptom logging (moods, discharge), and health analytics to monitor cycle irregularities.
+                    </div>
+                    <div class="project-links">
+                        <a href="https://www.figma.com/proto/WIqodQVFUrmLEqK231Wjbb/PERIOD-TRACKER---ARK?node-id=3-764&starting-point-node-id=3%3A764&t=vDH5U71ohp5iINcq-1" target="_blank" class="btn-card">
+                            <i class="fa-brands fa-figma"></i> View Prototype
+                        </a>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Product Design</span>
+                        <span class="tech-pill">Health Tech</span>
+                        <span class="tech-pill">Mobile Logic</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                 <img src="LiteraTulip.png" class="project-img" alt="LiteraTulip Project">
+                <div class="card-body">
+                    <div class="project-category">Web Development</div>
+                    <div class="project-title">LiteraTulip</div>
+                    <div class="project-desc">
+                        A full-stack web application for browsing and ordering books online. Focuses on efficient database management and a clean user interface.
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/teresakae/LiteraTulip" target="_blank" class="btn-card">
+                            <i class="fa-brands fa-github"></i> View GitHub
+                        </a>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Node.js</span>
+                        <span class="tech-pill">Express</span>
+                        <span class="tech-pill">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="MoneyTracker.png" class="project-img" alt="Money Tracker Project">
+                <div class="card-body">
+                    <div class="project-category">Software Eng</div>
+                    <div class="project-title">Money Tracker</div>
+                    <div class="project-desc">
+                        A desktop application for tracking income and expenses with visualized summary graphs. Includes date, name, and category sorting.
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/teresakae/MoneyTracker-Java" target="_blank" class="btn-card">
+                            <i class="fa-brands fa-github"></i> View GitHub
+                        </a>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Java</span>
+                        <span class="tech-pill">SQL</span>
+                        <span class="tech-pill">NetBeans</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <footer>
+            <div class="social-links" style="margin-bottom: 20px;">
+                <a href="https://linkedin.com/in/runidjiasta" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://github.com/runidjiasta" class="social-link"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:runidjiasta@gmail.com" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+            <div class="footer-text">
+                &copy; 2025 Runi Dwi Jiasta. Crafted with code.
+            </div>
+        </footer>
+
+    </div>
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+                reveal();
+    </script>
+
+</body>
+</html>
